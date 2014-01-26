@@ -7,8 +7,23 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"/>
     <style>
-        .col-md-4 {
+        .quantum .col-md-4 {
             text-align: center;
+        }
+        .featurette-divider {
+            margin: 80px 0;
+        }
+        .citation {
+            line-height: 2;
+            padding-left: 25px;
+            font-family: "Courier New", Courier, mono;
+            font-size: 12px;
+            margin: 0px 0px 25px 50px;
+        }
+        .citation p {
+            line-height: 2;
+            padding-left: 25px;
+            text-indent: -25px;
         }
     </style>
 </head>
@@ -19,7 +34,7 @@
             <p>What it is and why it's important</p>
         </div>
     </div>
-    <div class="container">
+    <div class="container quantum">
         <div class="row">
             <div class="col-md-4">
                 <i class="fa fa-arrow-circle-o-right fa-5x fa-spin"></i>
@@ -27,20 +42,68 @@
                 <p>A qubit is a unit of quantum information. While a bit can only be in one state or the other, qubits can be in a superposition of both at the same time!</p>
             </div>
             <div class="col-md-4">
-                <span class="fa-stack fa-lg">
-                    <i class="fa fa-laptop fa-stack-1x fa-5x"></i>
-                    <i class="fa fa-ban fa-stack-1x fa-5x text-danger"></i>
-                </span>
+                <i class="fa fa-laptop fa-5x"></i>
                 <h2>Not a Replacement</h2>
-                <p>Quantum computers can only have a massive speed advantage over classical computers when doing certain types of calculations.</p>
+                <p>Quantum computers can only have a speed advantage over classical computers when doing specific types of calculations.</p>
             </div>
             <div class="col-md-4">
                 <i class="fa fa-exclamation-triangle fa-5x text-warning"></i>
                 <h2>Fragile</h2>
-                <p>Qubits will return a classical value upon being observed. This means it must not be disturbed by any outside force or the whole system breaks down.</p>
+                <p>Qubits will return a classical value upon being observed. It must not be disturbed by any outside force or the whole system will break down.</p>
             </div>
         </div>
-
+        
+        <hr class="featurette-divider">
+        
+        <div class="row featurette">
+            <div class="col-md-9">
+                <h2 class="featurette-heading">Forget <em>everything</em> you knew about physics.</h2>
+                <p class="lead text-muted">At the quantum level, the usual laws of physics don't apply.</p>
+                <p>Quantum Physics is counter-intuitive. </p>
+            </div>
+            <div class="col-md-3">
+                <i class="fa fa-random fa-5x"></i>
+            </div>
+        </div>
+        
+        <hr class="featurette-divider">
+        
+        <div class="row featurette">
+            <div class="col-md-3">
+                <i class="fa fa-asterisk fa-5x text-info"></i>
+            </div>
+            <div class="col-md-9">
+                <h2 class="featurette-heading">Absolute Zero.</h2>
+                <p class="lead text-muted">Well, close enough.</p>
+                <p>The D-Wave Quantum Processor is operated at 20 millikelvin. Very low temperatures slow down particles enough to allow Quantum Mechanics to take place.</p>
+            </div>
+        </div>
+        
+        <hr class="featurette-divider">
+        
+        <div class="row featurette">
+            <div class="col-md-9">
+                <h2 class="featurette-heading">Breaking RSA Encryption Algorithm.</h2>
+                <p class="lead text-muted">The world standard for encryption relies on prime factors.</p>
+                <p>It is trivial to calculate the product of two prime numbers with a conventional computer. Finding the prime factors of a composite number (in this case a semi-prime) takes exponential time &mdash; which means it can be used in public key encryption. This is one of the few algorithms where quantum computers can execute parallel calculations simultaneously to break the security of the RSA algorithm.</p>
+                <p>The National Security Agency of the USA has expressed interest in breaking encryption standards for "national security" reasons, and quantum computing is certainly an option they will not overlook.</p>
+            </div>
+            <div class="col-md-3">
+                <i class="fa fa-code fa-5x"></i>
+            </div>
+        </div>
+        
+        <hr>
+        
+        <h2>Works Cited</h2>
+        
+        <div class="citation">
+            <p>cplai. "D-Wave Quantum Computer" Online video clip. <em>YouTube</em>. YouTube, 2 Nov. 2013. Web. 12 Jan. 2014.</p>
+            <p>Google. "Google and NASA's Quantum Artificial Intelligence Lab" Online video clip. <em>YouTube</em>. YouTube, 11 Oct. 2013. Web. 15 Jan. 2014.</p>
+            <p>Piled Higher and Deeper (PHD Comics). "Quantum Computers Animated" Online video clip. <em>YouTube</em>. YouTube, 22 Aug. 2013. Web. 11 Jan. 2014</p>
+            <p>Veritasium. "How Does a Quantum Computer Work?" Online video clip. <em>YouTube</em>. YouTube, 17 Jun. 2013. Web. 12 Jan. 2014.</p>
+        </div>
+        
         <hr>
 
         <footer>
