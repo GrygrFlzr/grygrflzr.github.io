@@ -9,20 +9,36 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                
-            </div>
-            <div class="col-md-4">
-                
-            </div>
-            <div class="col-md-4">
-                
-            </div>
+        <div class="page-header text-center">
+            <h1>MCP Mapper</h1>
         </div>
+        <noscript>
+        <div class="alert alert-danger">
+            Javascript must be enabled for this web application.
+        </div>
+        </noscript>
+        <div class="input-group hidden-print">
+            <span class="input-group-addon"><i class="fa fa-search"></i><span class="sr-only">Search</span></span>
+            <input type="text" id="search" class="form-control" placeholder="Type to search" disabled />
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        <strong>Deobfuscated Name</strong>
+                        <strong class="pull-right">Searge Name</strong>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="methods"></tbody>
+        </table>
+        <p id="loading" class="text-center">
+            <i class="fa fa-refresh fa-spin fa-5x text-info"></i>
+            <span class="sr-only">Loading data...</span>
+        </p>
         <hr>
         <footer>
-            <p>Created by GrygrFlzr (Martin Krisnanto Putra) 2014</p>
+            <p>Created by GrygrFlzr (Martin Krisnanto Putra) 2014 using data provided by MCP</p>
         </footer>
     </div>
     
@@ -32,5 +48,45 @@
     <![endif]-->
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+    <script>
+    $.ajax({
+        url : "data/methods.csv",
+        dataType: "text",
+        success : function (data) {
+            var loading = document.getElementById('loading');
+            loading.parentNode.removeChild(loading);
+            
+            var methods = $.csv.toObjects(data);
+            var table = document.getElementById('methods');
+            
+            var i, tr, td, name, searge, desc, descp;
+            for (i = 0; i < methods.length; i++) {
+                tr = document.createElement('tr');
+                td = document.createElement('td');
+                
+                name = document.createElement('strong');
+                name.appendChild(document.createTextNode(methods[i]['name']));
+                td.appendChild(name);
+                
+                searge = document.createElement('em');
+                searge.classList.add('pull-right');
+                searge.appendChild(document.createTextNode(methods[i]['searge']));
+                td.appendChild(searge);
+                
+                desc = methods[i]['desc'];
+                if(desc !== '') {
+                    descp = document.createElement('p');
+                    descp.appendChild(document.createTextNode(methods[i]['desc']));
+                    td.appendChild(descp);
+                }
+                
+                tr.appendChild(td);
+                table.appendChild(tr);
+            }
+            document.getElementById('search').disabled = false;
+        }
+    });
+    </script>
 </body>
 </html>
