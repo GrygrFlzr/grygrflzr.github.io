@@ -1123,6 +1123,7 @@ func_150085_b,getDirectionMeta,0,
 func_150091_e,canConnectWallTo,0,Return whether an adjacent block can connect to a wall.
 func_150098_a,canPaneConnectToBlock,0,
 func_150122_b,setGraphicsLevel,0,"Pass true to draw this block using fancy graphics, or false for fast graphics."
+func_150126_e,removeLeaves,0,
 func_150161_d,getTopIcon,0,
 func_150163_b,getSideIcon,0,
 func_150173_e,getRedstoneWireIcon,0,
@@ -1452,7 +1453,7 @@ func_70271_g,getDamageTaken,0,Gets the damage taken from the last hit.
 func_70288_d,setAgeToCreativeDespawnTime,0,sets the age of the item so that it'll despawn one minute after it has been dropped (instead of five). Used when items are dropped from players in creative mode
 func_70289_a,combineItems,0,Tries to merge this item with the item passed as the parameter. Returns true if successful. Either this item or the other item will  be removed from the world.
 func_70295_k_,openInventory,0,
-func_70296_d,onInventoryChanged,0,"Called when an the contents of an Inventory change, usually"
+func_70296_d,markDirty,0,"For tile entities, ensures the chunk containing the tile entity is saved to disk later - the game won't think it hasn't changed and skip it."
 func_70297_j_,getInventoryStackLimit,0,Returns the maximum stack size for a inventory slot.
 func_70298_a,decrStackSize,0,Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a new stack.
 func_70299_a,setInventorySlotContents,0,Sets the given item stack to the specified slot in the inventory (can be crafting or armor sections).
@@ -4650,6 +4651,9 @@ func_151551_a,randomlyFillWithBlocks,1,"arguments: World worldObj, StructureBoun
 func_151555_a,getMetadataWithOffset,1,"Returns the direction-shifted metadata for blocks that require orientation, e.g. doors, stairs, ladders."
 func_151556_a,fillWithMetadataBlocks,1,"arguments: (World worldObj, StructureBoundingBox structBB, int minX, int minY, int minZ, int maxX, int maxY, int maxZ, Block placeBlock, int placeBlockMetadata, Block replaceBlock, int replaceBlockMetadata, boolean alwaysreplace)"
 func_151565_r,getMaterialMapColor,1,
+func_151624_d,getIntsHeatIce,1,
+func_151625_e,getIntsSpecial,1,
+func_151626_c,getIntsCoolWarm,1,
 func_151644_a,getMapColorForBlockColored,1,
 func_70000_a,addServerStatsToSnooper,1,
 func_70001_b,addServerTypeToSnooper,1,
@@ -4762,7 +4766,7 @@ func_70271_g,getDamageTaken,1,Gets the damage taken from the last hit.
 func_70288_d,setAgeToCreativeDespawnTime,1,sets the age of the item so that it'll despawn one minute after it has been dropped (instead of five). Used when items are dropped from players in creative mode
 func_70289_a,combineItems,1,Tries to merge this item with the item passed as the parameter. Returns true if successful. Either this item or the other item will  be removed from the world.
 func_70295_k_,openChest,1,
-func_70296_d,onInventoryChanged,1,"Called when an the contents of an Inventory change, usually"
+func_70296_d,markDirty,1,"For tile entities, ensures the chunk containing the tile entity is saved to disk later - the game won't think it hasn't changed and skip it."
 func_70297_j_,getInventoryStackLimit,1,"Returns the maximum stack size for a inventory slot. Seems to always be 64, possibly will be extended. *Isn't this more of a set than a get?*"
 func_70298_a,decrStackSize,1,Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a new stack.
 func_70299_a,setInventorySlotContents,1,Sets the given item stack to the specified slot in the inventory (can be crafting or armor sections).

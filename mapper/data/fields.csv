@@ -884,6 +884,7 @@ field_149891_b,sunflowerIcons,0,
 field_149893_M,doublePlantBottomIcons,0,
 field_149894_N,doublePlantTopIcons,0,
 field_149914_a,isRepeaterPowered,0,Tells whether the repeater is powered or not
+field_149932_b,isBurning,0,
 field_149943_a,dispenseBehaviorRegistry,0,Registry for all dispense behaviors.
 field_149960_b,iconBrewingStandBase,0,
 field_149973_b,repeaterTorchOffset,0,The offsets for the two torches in redstone repeater blocks.
