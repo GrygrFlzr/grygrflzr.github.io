@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>MCP Mapper</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"/>
 </head>
 <body>
@@ -28,6 +28,7 @@
                         <strong>Deobfuscated Name</strong>
                         <strong class="pull-right">Searge Name</strong>
                     </th>
+                    <th><strong>Type</strong></th>
                 </tr>
             </thead>
             <tbody id="methods"></tbody>
@@ -47,20 +48,28 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
     <script>
     $.ajax({
+        url : "data/fields.csv",
+        dataType: "text",
+        success : loadcsv
+    });
+    $.ajax({
         url : "data/methods.csv",
         dataType: "text",
-        success : function (data) {
+        success : loadcsv
+    });
+    function loadcsv (data) {
             var loading = document.getElementById('loading');
-            loading.parentNode.removeChild(loading);
+            if(loading !== null)
+                loading.parentNode.removeChild(loading);
             
             var methods = $.csv.toObjects(data);
             var table = document.getElementById('methods');
             
-            var i, tr, td, name, searge, desc, descp;
+            var i, tr, td, name, searge, desc, descp, side;
             for (i = 0; i < methods.length; i++) {
                 tr = document.createElement('tr');
                 td = document.createElement('td');
@@ -82,11 +91,45 @@
                 }
                 
                 tr.appendChild(td);
+                //table.appendChild(tr);
+                
+                td = document.createElement('td');
+                
+                side = document.createElement('span');
+                side.classList.add('label');
+                if(methods[i]['side'] === '0') {
+                    side.classList.add('label-primary');
+                    side.appendChild(document.createTextNode('Clientside'));
+                } else {
+                    side.classList.add('label-info');
+                    side.appendChild(document.createTextNode('Serverside'));
+                }
+                td.appendChild(side);
+                
+                tr.appendChild(td);
                 table.appendChild(tr);
             }
             document.getElementById('search').disabled = false;
         }
-    });
+        var prevSearch = '';
+        var searchFilter = / +/g;
+        var modFilter = /\s+/g;
+        $('#search').bind("change keyup input",function() {
+            var val = $.trim($(this).val()).replace(searchFilter, ' ').toLowerCase();
+            
+            if(val !== prevSearch) {
+                console.log(val);
+                if(val === '') {
+                    $('table tbody tr').show();
+                } else {
+                    $('table tbody tr').show().filter(function() {
+                        var text = $(this).text().toLowerCase();
+                        return !~text.indexOf(val);
+                    }).hide();
+                }
+                prevSearch = val;
+            }
+        });
     </script>
 </body>
 </html>
