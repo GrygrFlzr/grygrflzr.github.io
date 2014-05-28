@@ -22,7 +22,7 @@
         <hr>
         
         <span id="time">
-            <span id="hour">00</span>:<span id="min">00</span>:<span id="sec">00</span>.<span id="ms">000</span>
+            <span id="hour">00</span>:<span id="min">00</span>:<span id="sec">00</span><small class="text-muted">.<span id="ms">000</span></small>
         </span>
         <br>
         <button id="start" type="button" class="btn btn-lg btn-primary">Start</button>
@@ -85,7 +85,7 @@
                 ms = tempTime % 1000;
                 refreshDisplay();
             }
-        }, 2);
+        }, 1);
     </script>
 </body>
 </html>
